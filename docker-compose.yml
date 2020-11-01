@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  dnsmasq:
+    image: letfn/dnsmasq
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 53:53/udp
+      - 53:53/tcp
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./etc/dnsmasq.conf:/etc/dnsmasq.conf

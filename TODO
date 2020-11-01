@@ -1,0 +1,7 @@
+sudo perl -pe 's{#DNSStubListener=.*}{DNSStubListener=no}' -i /etc/systemd/resolved.conf
+
+rm -f /etc/resolv.conf
+echo nameserver 169.254.32.1 > /etc/resolv.conf
+
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
